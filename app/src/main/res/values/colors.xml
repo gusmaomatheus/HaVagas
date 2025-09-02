@@ -1,5 +1,19 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
+    <!-- Main -->
+    <color name="app_background">#F5F5F5</color>
+    <color name="divider">#CFD8DC</color>
+
+    <!-- Text -->
+    <color name="text_body">#263238</color>
+    <color name="text_hint">#607D8B</color>
+
+    <!-- Other -->
+    <color name="corporate_blue">#0D47A1</color>
+    <color name="sky_blue">#1E88E5</color>
+    <color name="success_green">#43A047</color>
+
+    <!-- Default -->
     <color name="black">#FF000000</color>
     <color name="white">#FFFFFFFF</color>
 </resources>
