@@ -5,10 +5,10 @@ import android.view.View
 import android.view.ViewGroup
 import android.widget.AdapterView
 import android.widget.EditText
+import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
 import androidx.core.view.children
 import br.edu.ifsp.scl.ads.prdm.sc3039951.havagas.databinding.ActivityMainBinding
-import com.google.android.material.dialog.MaterialAlertDialogBuilder
 
 class MainActivity : AppCompatActivity() {
 
@@ -55,6 +55,10 @@ class MainActivity : AppCompatActivity() {
         binding.saveButton.setOnClickListener {
             buildAndShowSummaryDialog()
         }
+
+        binding.birthDateEditText.addTextChangedListener(MaskWatcher(binding.birthDateEditText, "##/##/####"))
+        binding.phoneEditText.addTextChangedListener(MaskWatcher(binding.phoneEditText, "(##) #####-####"))
+        binding.mobileEditText.addTextChangedListener(MaskWatcher(binding.mobileEditText, "(##) #####-####"))
     }
 
     private fun clearForm() {
@@ -114,7 +118,7 @@ class MainActivity : AppCompatActivity() {
         }
         summaryBuilder.append("\nVagas de Interesse: ${binding.jobsInterestEditText.text}")
 
-        MaterialAlertDialogBuilder(this)
+        AlertDialog.Builder(this)
             .setTitle(getString(R.string.registered_data_title))
             .setMessage(summaryBuilder.toString())
             .setPositiveButton(getString(R.string.ok_button), null)
