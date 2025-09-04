@@ -1,3 +1,41 @@
 <resources>
     <string name="app_name">HaVagas</string>
+
+    <string name="full_name">Nome Completo</string>
+    <string name="email">E-mail</string>
+    <string name="receive_emails_prompt">Deseja receber e-mails com novas oportunidades?</string>
+    <string name="phone_number">Telefone</string>
+    <string name="type_commercial">Comercial</string>
+    <string name="type_residential">Residencial</string>
+    <string name="add_mobile_phone">Adicionar telefone celular</string>
+    <string name="mobile_phone_number">Telefone Celular</string>
+    <string name="gender">Sexo</string>
+    <string name="gender_male">Masculino</string>
+    <string name="gender_female">Feminino</string>
+    <string name="date_of_birth">Data de Nascimento</string>
+    <string name="date_of_birth_hint">DD/MM/AAAA</string>
+    <string name="education_level">Formação</string>
+    <string name="graduation_year">Ano de Formatura</string>
+    <string name="completion_year">Ano de Conclusão</string>
+    <string name="institution">Instituição</string>
+    <string name="thesis_title">Título da Monografia</string>
+    <string name="advisor">Orientador(a)</string>
+    <string name="jobs_of_interest">Vagas de Interesse</string>
+    <string name="jobs_of_interest_hint">Ex: Desenvolvedor Android, Analista de Dados…</string>
+
+    <string name="save_button">Salvar</string>
+    <string name="clear_button">Limpar</string>
+
+    <string-array name="education_level_array">
+        <item>Selecione a Formação</item>
+        <item>Fundamental</item>
+        <item>Médio</item>
+        <item>Graduação</item>
+        <item>Especialização</item>
+        <item>Mestrado</item>
+        <item>Doutorado</item>
+    </string-array>
+
+    <string name="registered_data_title">Dados Cadastrados</string>
+    <string name="ok_button">OK</string>
 </resources>
