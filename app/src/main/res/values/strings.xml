@@ -22,6 +22,7 @@
     <string name="advisor">Orientador(a)</string>
     <string name="jobs_of_interest">Vagas de Interesse</string>
     <string name="jobs_of_interest_hint">Ex: Desenvolvedor Android, Analista de Dados…</string>
+    <string name="phone_hint">(12) 2877–7222</string>
 
     <string name="save_button">Salvar</string>
     <string name="clear_button">Limpar</string>
