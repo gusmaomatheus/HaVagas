@@ -1,3 +1,7 @@
+// ! FIX:
+// 1. Os campos ocultos não estão sendo limpos ao clicar no botão de "Limpar"
+// 1. Os campos que possuem mascarás "bugam" ao apertar backspace ao chegar em um caractere da própria mascara
+
 package br.edu.ifsp.scl.ads.prdm.sc3039951.havagas
 
 import android.os.Bundle
@@ -62,9 +66,19 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun clearForm() {
-        val rootLayout = binding.rootLayout as ViewGroup
-        rootLayout.children.filterIsInstance<EditText>().forEach { it.text.clear() }
-
+        binding.fullNameEditText.text.clear()
+        binding.emailEditText.text.clear()
+        binding.phoneEditText.text.clear()
+        binding.mobileEditText.text.clear()
+        binding.birthDateEditText.text.clear()
+        binding.graduationYearEditText.text.clear()
+        binding.undergradCompletionYearEditText.text.clear()
+        binding.undergradInstitutionEditText.text.clear()
+        binding.mastersCompletionYearEditText.text.clear()
+        binding.mastersInstitutionEditText.text.clear()
+        binding.thesisTitleEditText.text.clear()
+        binding.advisorEditText.text.clear()
+        binding.jobsInterestEditText.text.clear()
         binding.phoneTypeRadioGroup.clearCheck()
         binding.genderRadioGroup.clearCheck()
         binding.receiveEmailsCheckbox.isChecked = false
