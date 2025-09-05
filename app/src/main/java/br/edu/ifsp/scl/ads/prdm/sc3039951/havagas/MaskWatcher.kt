@@ -6,38 +6,36 @@ import android.widget.EditText
 
 class MaskWatcher(private val editText: EditText, private val mask: String) : TextWatcher {
     private var isUpdating = false
-    private var oldText = ""
 
     override fun beforeTextChanged(s: CharSequence, start: Int, count: Int, after: Int) {}
 
-    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
-        val str = s.toString().replace("[^\\d]".toRegex(), "")
-        var result = ""
+    override fun afterTextChanged(s: Editable) {}
 
-        if (isUpdating || str == oldText) {
+    override fun onTextChanged(s: CharSequence, start: Int, before: Int, count: Int) {
+        if (isUpdating) {
             return
         }
 
+        val unmasked = s.toString().replace("[^\\d]".toRegex(), "")
+        val formatted = StringBuilder()
         isUpdating = true
-        var i = 0
-        for (m in mask.toCharArray()) {
-            if ((m != '#') && (str.length > oldText.length)) {
-                result += m
-                continue
-            }
-            try {
-                result += str[i]
-            } catch (e: Exception) {
+
+        var unmaskedIndex = 0
+        for (maskChar in mask.toCharArray()) {
+            if (unmaskedIndex >= unmasked.length) {
                 break
             }
-            i++
+            if (maskChar == '#') {
+                formatted.append(unmasked[unmaskedIndex])
+                unmaskedIndex++
+            } else {
+                formatted.append(maskChar)
+            }
         }
 
-        editText.setText(result)
-        editText.setSelection(result.length)
+        editText.setText(formatted.toString())
+        editText.setSelection(formatted.length)
 
         isUpdating = false
     }
-
-    override fun afterTextChanged(s: Editable) {}
 }
