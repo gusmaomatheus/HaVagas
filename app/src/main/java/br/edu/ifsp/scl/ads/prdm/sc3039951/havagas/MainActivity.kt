@@ -2,12 +2,9 @@ package br.edu.ifsp.scl.ads.prdm.sc3039951.havagas
 
 import android.os.Bundle
 import android.view.View
-import android.view.ViewGroup
 import android.widget.AdapterView
-import android.widget.EditText
 import androidx.appcompat.app.AlertDialog
 import androidx.appcompat.app.AppCompatActivity
-import androidx.core.view.children
 import br.edu.ifsp.scl.ads.prdm.sc3039951.havagas.databinding.ActivityMainBinding
 
 class MainActivity : AppCompatActivity() {
@@ -26,27 +23,35 @@ class MainActivity : AppCompatActivity() {
             binding.mobileLayout.visibility = if (isChecked) View.VISIBLE else View.GONE
         }
 
-        binding.educationSpinner.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
-            override fun onItemSelected(parent: AdapterView<*>?, view: View?, position: Int, id: Long) {
-                binding.elementaryHighSchoolLayout.visibility = View.GONE
-                binding.undergradSpecializationLayout.visibility = View.GONE
-                binding.mastersPhdLayout.visibility = View.GONE
+        binding.educationSpinner.onItemSelectedListener =
+            object : AdapterView.OnItemSelectedListener {
+                override fun onItemSelected(
+                    parent: AdapterView<*>?,
+                    view: View?,
+                    position: Int,
+                    id: Long
+                ) {
+                    binding.elementaryHighSchoolLayout.visibility = View.GONE
+                    binding.undergradSpecializationLayout.visibility = View.GONE
+                    binding.mastersPhdLayout.visibility = View.GONE
 
-                when (position) {
-                    1, 2 -> {
-                        binding.elementaryHighSchoolLayout.visibility = View.VISIBLE
-                    }
-                    3, 4 -> {
-                        binding.undergradSpecializationLayout.visibility = View.VISIBLE
-                    }
-                    5, 6 -> {
-                        binding.mastersPhdLayout.visibility = View.VISIBLE
+                    when (position) {
+                        1, 2 -> {
+                            binding.elementaryHighSchoolLayout.visibility = View.VISIBLE
+                        }
+
+                        3, 4 -> {
+                            binding.undergradSpecializationLayout.visibility = View.VISIBLE
+                        }
+
+                        5, 6 -> {
+                            binding.mastersPhdLayout.visibility = View.VISIBLE
+                        }
                     }
                 }
-            }
 
-            override fun onNothingSelected(parent: AdapterView<*>?) {}
-        }
+                override fun onNothingSelected(parent: AdapterView<*>?) {}
+            }
 
         binding.clearButton.setOnClickListener {
             clearForm()
@@ -56,9 +61,24 @@ class MainActivity : AppCompatActivity() {
             buildAndShowSummaryDialog()
         }
 
-        binding.birthDateEditText.addTextChangedListener(MaskWatcher(binding.birthDateEditText, "##/##/####"))
-        binding.phoneEditText.addTextChangedListener(MaskWatcher(binding.phoneEditText, "(##) #####-####"))
-        binding.mobileEditText.addTextChangedListener(MaskWatcher(binding.mobileEditText, "(##) #####-####"))
+        binding.birthDateEditText.addTextChangedListener(
+            MaskWatcher(
+                binding.birthDateEditText,
+                "##/##/####"
+            )
+        )
+        binding.phoneEditText.addTextChangedListener(
+            MaskWatcher(
+                binding.phoneEditText,
+                "(##) #####-####"
+            )
+        )
+        binding.mobileEditText.addTextChangedListener(
+            MaskWatcher(
+                binding.mobileEditText,
+                "(##) #####-####"
+            )
+        )
     }
 
     private fun clearForm() {
@@ -92,7 +112,8 @@ class MainActivity : AppCompatActivity() {
         summaryBuilder.append("Telefone: ${binding.phoneEditText.text}\n")
         val phoneTypeId = binding.phoneTypeRadioGroup.checkedRadioButtonId
         if (phoneTypeId != -1) {
-            val phoneType = if (phoneTypeId == R.id.commercialRadioButton) "Comercial" else "Residencial"
+            val phoneType =
+                if (phoneTypeId == R.id.commercialRadioButton) "Comercial" else "Residencial"
             summaryBuilder.append("Tipo do Telefone: $phoneType\n")
         }
 
@@ -114,10 +135,12 @@ class MainActivity : AppCompatActivity() {
                 1, 2 -> {
                     summaryBuilder.append("Ano de Formatura: ${binding.graduationYearEditText.text}\n")
                 }
+
                 3, 4 -> {
                     summaryBuilder.append("Ano de Conclusão: ${binding.undergradCompletionYearEditText.text}\n")
                     summaryBuilder.append("Instituição: ${binding.undergradInstitutionEditText.text}\n")
                 }
+
                 5, 6 -> {
                     summaryBuilder.append("Ano de Conclusão: ${binding.mastersCompletionYearEditText.text}\n")
                     summaryBuilder.append("Instituição: ${binding.mastersInstitutionEditText.text}\n")
@@ -128,10 +151,8 @@ class MainActivity : AppCompatActivity() {
         }
         summaryBuilder.append("\nVagas de Interesse: ${binding.jobsInterestEditText.text}")
 
-        AlertDialog.Builder(this)
-            .setTitle(getString(R.string.registered_data_title))
+        AlertDialog.Builder(this).setTitle(getString(R.string.registered_data_title))
             .setMessage(summaryBuilder.toString())
-            .setPositiveButton(getString(R.string.ok_button), null)
-            .show()
+            .setPositiveButton(getString(R.string.ok_button), null).show()
     }
 }
