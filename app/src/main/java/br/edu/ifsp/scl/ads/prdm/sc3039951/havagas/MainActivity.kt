@@ -1,7 +1,3 @@
-// ! FIX:
-// 1. Os campos ocultos não estão sendo limpos ao clicar no botão de "Limpar"
-// 1. Os campos que possuem mascarás "bugam" ao apertar backspace ao chegar em um caractere da própria mascara
-
 package br.edu.ifsp.scl.ads.prdm.sc3039951.havagas
 
 import android.os.Bundle
